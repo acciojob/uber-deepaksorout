@@ -37,12 +37,12 @@ public class CustomerServiceImpl implements CustomerService {
 	public void deleteCustomer(Integer customerId) {
 		// Delete customer without using deleteById function
 		Customer customer=customerRepository2.findById(customerId).get();
-//		List<TripBooking> tripBookingList=customer.getTripBookingList();
-//		for(TripBooking t:tripBookingList){
-//			if(t.getStatus().equals(TripStatus.CONFIRMED)){
-//				t.setStatus(TripStatus.CANCELED);
-//			}
-//		}
+		List<TripBooking> tripBookingList=customer.getTripBookingList();
+		for(TripBooking t:tripBookingList){
+			if(t.getStatus().equals(TripStatus.CONFIRMED)){
+				t.setStatus(TripStatus.CANCELED);
+			}
+		}
 		customerRepository2.delete(customer);
 	}
 
