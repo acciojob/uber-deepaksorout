@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
 		boolean flag=false;
 		TripBooking tripBooking=new TripBooking();
 		for(int i=driverRepository2.getMinId();i<=driverRepository2.getMaxId();i++){
-			if(driverRepository2.findById(i).get().getCab().isAvailable()==true){
+			if(driverRepository2.findById(i).isPresent() && driverRepository2.findById(i).get().getCab().isAvailable()==true){
 				tripBooking.setDriver(driverRepository2.findById(i).get());
 				tripBooking.setCustomer(customerRepository2.findById(customerId).get());
 				tripBooking.setDistanceInKm(distanceInKm);

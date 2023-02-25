@@ -53,26 +53,13 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Driver> getListOfDrivers() {
 		//Find the list of all drivers
-		List<Driver> driverList=new ArrayList<>();
-		int maxId=driverRepository1.getMaxId();
-		int minId=driverRepository1.getMinId();
-		for(int i=minId;i<=maxId;i++){
-			driverList.add(driverRepository1.findById(i).get());
-		}
-		return driverList;
+		return driverRepository1.findAll();
 	}
 
 	@Override
 	public List<Customer> getListOfCustomers() {
 		//Find the list of all customers
-		List<Customer> customerList=new ArrayList<>();
-		int maxId=customerRepository1.getMaxId();
-		int minId=customerRepository1.getMinId();
-
-		for(int i=minId;i<=maxId;i++){
-			customerList.add(customerRepository1.findById(i).get());
-		}
-		return customerList;
+		return customerRepository1.findAll();
 	}
 
 }
